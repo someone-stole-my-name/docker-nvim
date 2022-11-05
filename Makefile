@@ -32,12 +32,10 @@ setup-buildx:
 
 push: setup-buildx
 	docker buildx build \
-		--build-arg GOVERSION=$(GOVERSION) \
 		--platform $(IMAGE_PLATFORMS) \
 		-t $(IMAGE_NAME):latest . --push
 	if git describe --exact-match; then	\
 			docker buildx build \
-				--build-arg GOVERSION=$(GOVERSION) \
 				--platform $(IMAGE_PLATFORMS) \
 				-t $(IMAGE_NAME):$(shell git describe --tags --abbrev=0) . --push; \
 	fi
@@ -50,6 +48,6 @@ docker-%:
 		-v /var/run/docker.sock:/var/run/docker.sock \
 		-v $(shell pwd):/data \
 		-w /data $(DOCKER_EXTRA_ARGS) \
-		golang:$(GOVERSION) sh -c "\
+		debian:latest sh -c "\
 			apt-get update && \
 			apt-get install -y $$DOCKER_DEPS && make $*"
