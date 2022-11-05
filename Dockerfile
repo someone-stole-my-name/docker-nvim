@@ -9,21 +9,13 @@ RUN apk --no-cache add \
   automake \
   bash \
   build-base \
-  cargo \
   cmake \
   coreutils \
   curl \
   gettext-tiny-dev \
   git \
-  libarchive-tools \
   libtool \
-  make \
-  npm \
-  perl \
-  perl-json-xs \
-  perl-lwp-protocol-https \
   pkgconf \
-  rust \
   unzip
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
