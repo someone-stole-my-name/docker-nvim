@@ -1,6 +1,6 @@
 FROM alpine:latest
 
-ARG NEOVIM_VERSION=stable
+ARG NEOVIM_VERSION=v0.8.0
 
 WORKDIR /tmp/nvim
 
